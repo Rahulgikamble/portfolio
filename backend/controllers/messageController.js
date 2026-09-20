@@ -1,7 +1,6 @@
 import Message from '../models/Message.js';
 import sendEmail from '../utils/sendEmail.js';
 
-// @route POST /api/messages  (public — the Contact form)
 export const createMessage = async (req, res) => {
   try {
     const { name, email, message } = req.body;
@@ -10,7 +9,6 @@ export const createMessage = async (req, res) => {
     }
     const saved = await Message.create({ name, email, message });
 
-    // Fire-and-forget: don't let an email failure block the form submission.
     sendEmail({
       toEmail: process.env.EMAIL_TO,
       subject: `New portfolio message from ${name}`,
@@ -24,13 +22,11 @@ export const createMessage = async (req, res) => {
   }
 };
 
-// @route GET /api/messages  (admin only)
 export const getMessages = async (req, res) => {
   const messages = await Message.find().sort({ createdAt: -1 });
   res.json(messages);
 };
 
-// @route PUT /api/messages/:id/read  (admin only)
 export const markRead = async (req, res) => {
   try {
     const message = await Message.findByIdAndUpdate(req.params.id, { read: true }, { new: true });
@@ -40,7 +36,6 @@ export const markRead = async (req, res) => {
   }
 };
 
-// @route DELETE /api/messages/:id  (admin only)
 export const deleteMessage = async (req, res) => {
   try {
     await Message.findByIdAndDelete(req.params.id);

@@ -3,7 +3,6 @@ import { createMessage, getMessages, markRead, deleteMessage } from '../controll
 import { protect } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
-
 router.post('/', createMessage);
 router.get('/', protect, getMessages);
 router.put('/:id/read', protect, markRead);

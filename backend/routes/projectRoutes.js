@@ -3,7 +3,6 @@ import { getProjects, createProject, updateProject, deleteProject } from '../con
 import { protect } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
-
 router.get('/', getProjects);
 router.post('/', protect, createProject);
 router.put('/:id', protect, updateProject);

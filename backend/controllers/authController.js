@@ -1,9 +1,6 @@
 import Admin from '../models/Admin.js';
 import { generateToken } from '../utils.js';
 
-// @route POST /api/auth/login
-// Note: there is deliberately no register endpoint. The single admin
-// account is created once via `npm run seed:admin`.
 export const loginAdmin = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -24,7 +21,6 @@ export const loginAdmin = async (req, res) => {
   }
 };
 
-// @route GET /api/auth/me
 export const getMe = async (req, res) => {
   res.json(req.admin);
 };

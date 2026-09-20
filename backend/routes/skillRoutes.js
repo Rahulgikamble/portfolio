@@ -3,7 +3,6 @@ import { getSkills, createSkill, updateSkill, deleteSkill } from '../controllers
 import { protect } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
-
 router.get('/', getSkills);
 router.post('/', protect, createSkill);
 router.put('/:id', protect, updateSkill);

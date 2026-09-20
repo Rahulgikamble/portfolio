@@ -1,7 +1,6 @@
 import jwt from 'jsonwebtoken';
 import Admin from '../models/Admin.js';
 
-// Protects admin-only routes (create/update/delete skills, projects, profile, reading messages).
 export const protect = async (req, res, next) => {
   let token;
 

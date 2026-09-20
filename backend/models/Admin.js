@@ -1,8 +1,6 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 
-// There is intentionally no public registration route for this model.
-// The one admin account is created via `npm run seed:admin` from .env values.
 const adminSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },

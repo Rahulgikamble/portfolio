@@ -1,7 +1,5 @@
 import mongoose from 'mongoose';
 
-// Single-document collection: only one Profile ever exists.
-// Powers the Home page hero/about content.
 const profileSchema = new mongoose.Schema(
   {
     name: { type: String, default: 'Your Name' },
@@ -15,7 +13,7 @@ const profileSchema = new mongoose.Schema(
     github: { type: String, default: '' },
     linkedin: { type: String, default: '' },
     instagram: { type: String, default: '' },
-    whatsapp: { type: String, default: '' }, // full phone number with country code, digits only
+    whatsapp: { type: String, default: '' },
   },
   { timestamps: true }
 );

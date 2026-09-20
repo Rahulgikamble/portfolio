@@ -1,12 +1,10 @@
 import Skill from '../models/Skill.js';
 
-// @route GET /api/skills  (public)
 export const getSkills = async (req, res) => {
   const skills = await Skill.find().sort({ category: 1, order: 1, createdAt: 1 });
   res.json(skills);
 };
 
-// @route POST /api/skills  (admin only)
 export const createSkill = async (req, res) => {
   try {
     const skill = await Skill.create(req.body);
@@ -16,7 +14,6 @@ export const createSkill = async (req, res) => {
   }
 };
 
-// @route PUT /api/skills/:id  (admin only)
 export const updateSkill = async (req, res) => {
   try {
     const skill = await Skill.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -27,7 +24,6 @@ export const updateSkill = async (req, res) => {
   }
 };
 
-// @route DELETE /api/skills/:id  (admin only)
 export const deleteSkill = async (req, res) => {
   try {
     await Skill.findByIdAndDelete(req.params.id);

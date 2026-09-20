@@ -1,8 +1,3 @@
-// Creates your ONE admin login from the ADMIN_* values in .env.
-// Run once with: npm run seed:admin
-// Safe to run again later if you want to reset your password —
-// it updates the existing admin instead of creating a duplicate.
-
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import Admin from '../models/Admin.js';
@@ -22,7 +17,7 @@ const seedAdmin = async () => {
     let admin = await Admin.findOne({ email: ADMIN_EMAIL });
     if (admin) {
       admin.name = ADMIN_NAME;
-      admin.password = ADMIN_PASSWORD; // pre-save hook re-hashes this
+      admin.password = ADMIN_PASSWORD;
       await admin.save();
       console.log(`Admin ${ADMIN_EMAIL} updated.`);
     } else {
